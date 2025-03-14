@@ -1,0 +1,25 @@
+{
+  "name": "personal_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calhounbryce13/calhounbryce13-BACKEND.git"
+  },
+  "author": "Bryce Calhoun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calhounbryce13/calhounbryce13-BACKEND/issues"
+  },
+  "homepage": "https://github.com/calhounbryce13/calhounbryce13-BACKEND#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "nodemon": "3.1.9"
+  }
+}
