@@ -17,8 +17,8 @@ app.use(cors({
 
 
 app.get("/testing", (req, res) =>{
-    let testing = "lets see what happens";
-    res.send(testing);
+    let testing = {message: "lets see what happens"};
+    res.json(testing);
 
 });
 
