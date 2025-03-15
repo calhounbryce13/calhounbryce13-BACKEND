@@ -5,7 +5,13 @@ import cors from 'cors';
 const PORT = 3000;
 
 app.use(cors({
-    origin : 'https://calhounbryce13.github.io/',
+    origin: (origin, callback) => {
+        if (!origin || origin === "null") {  // Allow requests from null origins
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: ['GET, POST']
 }))
 
