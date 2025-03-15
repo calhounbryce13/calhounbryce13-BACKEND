@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express();
 import cors from 'cors';
+import { json } from 'express';
+
 
 const PORT = process.env.PORT || 3000
 
@@ -15,9 +17,11 @@ app.use(cors({
     methods: ['GET, POST']
 }))
 
+app.use(express.json());
 
-app.get("/testing", (req, res) =>{
-    let testing = {message: "lets see what happens"};
+
+app.post("/testing", (req, res) =>{
+    let testing = {message: JSON.stringify(req.body)};
     res.json(testing);
 
 });
