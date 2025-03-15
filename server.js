@@ -4,9 +4,6 @@ import cors from 'cors';
 
 const PORT = 3000;
 
-app.use(cors(
-    
-))
 
 
 //todo: i need route handlers 
