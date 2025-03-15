@@ -6,12 +6,13 @@ const PORT = 3000;
 
 app.use(cors({
     origin : 'https://calhounbryce13.github.io/',
-    methods: 'GET, POST'
+    methods: ['GET, POST']
 }))
 
 
-app.GET("/testing", (req, res) =>{
-    window.alert("endpoint defined!")
+app.get("/testing", (req, res) =>{
+    let testing = "lets see what happens";
+    res.send(testing);
 
 });
 
