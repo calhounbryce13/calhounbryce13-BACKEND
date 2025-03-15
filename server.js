@@ -21,6 +21,8 @@ app.use(express.json());
 
 
 app.post("/testing", (req, res) =>{
+    //! this endpoint will process the user data by sending 
+    //! an email to myself, not collecting user email atm.
     let testing = {message: JSON.stringify(req.body)};
     res.json(testing);
 
