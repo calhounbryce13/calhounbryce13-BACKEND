@@ -4,11 +4,10 @@ import cors from 'cors';
 
 const PORT = 3000;
 
-
-
-//todo: i need route handlers 
-//? for what ?
-//* user needs to be able to submit email and message
+app.use(cors({
+    origin : 'https://calhounbryce13.github.io/',
+    methods: 'GET, POST'
+}))
 
 
 app.GET("/testing", (req, res) =>{
