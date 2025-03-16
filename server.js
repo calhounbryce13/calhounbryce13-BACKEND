@@ -33,7 +33,7 @@ let postman = nodemailer.createTransport({
     secure: true,
     auth:{
         user: "calhounbryce13@gmail.com",
-        pass: "T4113ngr10010137"
+        pass: "abjz dhzm bijv wmky"
     }
 })
 
