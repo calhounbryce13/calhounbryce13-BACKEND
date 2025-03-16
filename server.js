@@ -1,8 +1,11 @@
-import express from 'express';
-const app = express();
-import cors from 'cors';
-import { json } from 'express';
+/*
+Description: Server-side data processing script for the frontend of my portfolio page
+Author: Bryce Calhoun
+ */
 import nodemailer from 'nodemailer';
+import express from 'express';
+import cors from 'cors';
+const app = express();
 
 
 const PORT = process.env.PORT || 3000
@@ -39,8 +42,6 @@ let postman = nodemailer.createTransport({
 
 
 app.post("/emailMe", async(req, res) =>{
-    //todo this endpoint will process the user data by sending 
-    //todo an email to myself, not collecting user email atm.
     
     const name = req.body.name;
     const message = req.body.message;
