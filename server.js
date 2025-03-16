@@ -26,7 +26,7 @@ app.use(cors({
 
 
 //! DEPLOYMENT NOTE: use environment variables stored on heroku dashboard
-//!                  prior to deployment, do not leave password in here
+//!                  prior to deployment, do not leave app password in here
 let postman = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -38,7 +38,7 @@ let postman = nodemailer.createTransport({
 })
 
 
-app.post("/testing", async(req, res) =>{
+app.post("/emailMe", async(req, res) =>{
     //todo this endpoint will process the user data by sending 
     //todo an email to myself, not collecting user email atm.
     
