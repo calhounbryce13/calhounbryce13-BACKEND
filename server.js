@@ -27,7 +27,7 @@ app.use(cors({
 
 //! DEPLOYMENT NOTE: use environment variables stored on heroku dashboard
 //!                  prior to deployment, do not leave password in here
-let transporter = nodemailer.createTransport({
+let postman = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
@@ -38,12 +38,26 @@ let transporter = nodemailer.createTransport({
 })
 
 
-app.post("/testing", (req, res) =>{
-    //! this endpoint will process the user data by sending 
-    //! an email to myself, not collecting user email atm.
-    console.log(req.body);
-    let testing = {message: JSON.stringify(req.body)};
-    res.json(testing);
+app.post("/testing", async(req, res) =>{
+    //todo this endpoint will process the user data by sending 
+    //todo an email to myself, not collecting user email atm.
+    
+    const name = req.body.name;
+    const message = req.body.message;
+
+    try{
+        let postMail = await postman.sendMail({
+            from: 'calhounbryce13@gmail.com',
+            to: 'calhounbryce13@gmail.com',
+            subject: 'A user sent you a new message',
+            text: `${name} says ${message}`
+        })
+        res.status(200).send(JSON.stringify({success: true}));
+    }catch(error){
+        console.log(error, "couldn't send email");
+        res.status(500).send(JSON.stringify({success: false}))
+    }
+
 
 });
 
