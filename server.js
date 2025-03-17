@@ -7,12 +7,10 @@ import express from 'express';
 import cors from 'cors';
 const app = express();
 
-
 const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 //!DEPLOYMENT NOTE: update the cors config. to allow access
 //!                 from the website domain
@@ -27,7 +25,6 @@ app.use(cors({
     methods: ['GET, POST']
 }))
 
-
 //! DEPLOYMENT NOTE: use environment variables stored on heroku dashboard
 //!                  prior to deployment, do not leave app password in here
 let postman = nodemailer.createTransport({
@@ -39,7 +36,6 @@ let postman = nodemailer.createTransport({
         pass: "abjz dhzm bijv wmky"
     }
 })
-
 
 app.post("/emailMe", async(req, res) =>{
     
