@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //!DEPLOYMENT NOTE: update the cors config. to allow access
-//!                 from the website domain
+//!                 from the actual website domain
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || origin === "null") {  // Allow requests from null origins
@@ -37,7 +37,7 @@ let postman = nodemailer.createTransport({
     }
 })
 
-app.post("/emailMe", async(req, res) =>{
+app.post("/mailer", async(req, res) =>{
     
     const name = req.body.name;
     const message = req.body.message;
