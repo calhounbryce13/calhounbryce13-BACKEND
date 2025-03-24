@@ -15,25 +15,24 @@ app.use(express.urlencoded({ extended: true }));
 //!DEPLOYMENT NOTE: update the cors config. to allow access
 //!                 from the actual website domain
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || origin === "null") {  // Allow requests from null origins
+    /*origin: (origin, callback) => {
+        if (!origin || origin === "null") {  // Allow requests from null origins for local testing
             callback(null, true);
         } else {
-            callback(new Error("Not allowed by CORS"));
+            callback(new Error("Blocked by CORS"));
         }
-    },
+    },*/
+    origin: "https://calhounbryce13.github.io/",
     methods: ['GET, POST']
 }))
 
-//! DEPLOYMENT NOTE: use environment variables stored on heroku dashboard
-//!                  prior to deployment, do not leave app password in here
 let postman = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth:{
         user: "calhounbryce13@gmail.com",
-        pass: "abjz dhzm bijv wmky"
+        pass: process.env.EMAIL_PASSWORD
     }
 })
 
