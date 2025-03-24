@@ -22,7 +22,7 @@ app.use(cors({
             callback(new Error("Blocked by CORS"));
         }
     },*/
-    origin: "https://calhounbryce13.github.io/",
+    origin: "https://calhounbryce13.github.io",
     methods: ['GET, POST']
 }))
 
