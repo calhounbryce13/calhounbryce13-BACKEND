@@ -12,23 +12,15 @@ const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//!DEPLOYMENT NOTE: update the cors config. to allow access
-//!                 from the actual website domain
 app.use(cors({
-    /*origin: (origin, callback) => {
-        if (!origin || origin === "null") {  // Allow requests from null origins for local testing
-            callback(null, true);
-        } else {
-            callback(new Error("Blocked by CORS"));
-        }
-    },*/
+
     origin: "https://calhounbryce13.github.io",
     methods: ['GET, POST']
 }))
 
 let postman = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
+    port: 2525,
     secure: true,
     auth:{
         user: "calhounbryce13@gmail.com",
