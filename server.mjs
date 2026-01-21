@@ -19,7 +19,7 @@ app.use(cors({
 
 app.post('/get-user-data', (req, res) => {
     if(req.body["application"]){
-        const date = new Date().toUTCString();
+        const date = new Date().toLocaleString;
         const message = `user with IP: ${req.ip} has just accessed ${req.body["application"]} at ${date}`;
         try{
             messages.save_new_message(message);
@@ -33,7 +33,6 @@ app.post('/get-user-data', (req, res) => {
     return;
 });
 
-
 app.get('/messages', async(req, res) => {
     try{
         const data = await messages.get_all_messages();
@@ -44,7 +43,6 @@ app.get('/messages', async(req, res) => {
     }
     return
 });
-
 
 app.post("/mailer", async(req, res) =>{
     if(req.body){
