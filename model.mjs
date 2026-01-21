@@ -22,16 +22,14 @@ const save_new_message = function(message){
     return newMssg.save();
 }
 
-const get_all_messages = function(){
-    const messages = Mssg.find({}, {'message': 1, '_id': 0});
+const get_all_messages = async() => {
+    let messages = Mssg.find({}, {'message': 1, '_id': 0});
     return messages;
 }
 
 db.once("open", ()=>{
     console.log("\nconnected to mongodb database!");
 });
-
-console.log(await get_all_messages());
 
 
 export default { save_new_message, get_all_messages }

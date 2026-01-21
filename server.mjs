@@ -16,6 +16,23 @@ app.use(cors({
     methods: ['GET, POST']
 }));
 
+
+
+app.post('/get-user-data', (req, res) => {
+    if(req.body["application"]){
+        const message = `user with IP: ${req.ip} has just accessed ${req.body["application"]}`;
+        try{
+            messages.save_new_message(message);
+            res.status(200).json("success");
+        }catch(error){
+            res.status(500).json({"error": "could not save the message"})
+        }
+        return;
+    }
+    res.status(400).json({"error": "app name not present"});
+    return;
+});
+
 app.get('/messages', async(req, res) => {
 
     try{

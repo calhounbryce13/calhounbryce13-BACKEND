@@ -12,3 +12,14 @@ Content-Type: application/json
 {
     "message": "nice website Bryce!"
 }
+
+
+###
+
+
+POST http://127.0.0.1:3000/get-user-data
+Content-Type: application/json
+
+{
+    "application": "Portfolio page"
+}
