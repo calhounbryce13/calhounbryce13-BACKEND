@@ -17,15 +17,15 @@ app.use(cors({
 }));
 
 
-
 app.post('/get-user-data', (req, res) => {
     if(req.body["application"]){
-        const message = `user with IP: ${req.ip} has just accessed ${req.body["application"]}`;
+        const date = new Date().toUTCString();
+        const message = `user with IP: ${req.ip} has just accessed ${req.body["application"]} at ${date}`;
         try{
             messages.save_new_message(message);
             res.status(200).json("success");
         }catch(error){
-            res.status(500).json({"error": "could not save the message"})
+            res.status(500).json({"error": "could not save the message"});
         }
         return;
     }
@@ -33,8 +33,8 @@ app.post('/get-user-data', (req, res) => {
     return;
 });
 
-app.get('/messages', async(req, res) => {
 
+app.get('/messages', async(req, res) => {
     try{
         const data = await messages.get_all_messages();
         res.status(200).json(data);
