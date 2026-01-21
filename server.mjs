@@ -19,7 +19,7 @@ app.use(cors({
 
 app.post('/get-user-data', (req, res) => {
     if(req.body["application"]){
-        const date = new Date().toLocaleString;
+        const date = new Date().toLocaleString();
         const message = `user with IP: ${req.ip} has just accessed ${req.body["application"]} at ${date}`;
         try{
             messages.save_new_message(message);
