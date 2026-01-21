@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: "https://calhounbryce13.github.io",
-    methods: ['GET, POST']
+    methods: ['GET', 'POST']
 }));
 
 
