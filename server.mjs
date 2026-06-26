@@ -49,6 +49,7 @@ app.post("/mailer", async(req, res) =>{
 
 app.put("/traffic-log", async(req, res) => {
     const { programName } = JSON.parse(req.body);
+    console.log(programName);
     if(programName){
         const result = await messages.update_log(programName);
         if(!result){
