@@ -12,9 +12,17 @@ const messageSchema = new mongoose.Schema({
     message: {type: String, required: true}
 });
 
-const Mssg = mongoose.model('new-message', messageSchema, 'messages');
 
-const db = mongoose.connection;
+const trafficLogSchema = new mongoose.Schema({
+    projectory: {type: Number, required: true},
+    minimaxSolver: {type: Number, required: true},
+    quiznest: {type: Number, required: true},
+});
+
+
+const Log = mongoose.model('log', trafficLogSchema, 'traffic-log');
+
+const Mssg = mongoose.model('new-message', messageSchema, 'messages');
 
 
 const save_new_message = function(message){
@@ -27,9 +35,30 @@ const get_all_messages = async() => {
     return messages;
 }
 
+const update_log = async(programName) => {
+    try{
+        const log = await Log.find({});
+        if(log[0][programName] != undefined){
+            log[0][programName]++;
+            try{
+                await log[0].save();
+                return 0; // success
+            }catch{
+                return 1; // error saving
+            }
+        }
+        throw "invalid name";
+    }catch{
+        return 2; // error finding
+    }
+};
+
+
+const db = mongoose.connection;
+
 db.once("open", ()=>{
     console.log("\nconnected to mongodb database!");
 });
 
 
-export default { save_new_message, get_all_messages }
+export default { save_new_message, get_all_messages, update_log }

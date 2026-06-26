@@ -1,5 +1,5 @@
 /*
-Description: Server-side data processing script for the frontend of my portfolio page
+Description: Server-side data processing script.
 Author: Bryce Calhoun
  */
 import express from 'express';
@@ -45,6 +45,26 @@ app.post("/mailer", async(req, res) =>{
     res.status(400).json({"error":"missing request body"});
     return;
     
+});
+
+app.put("/traffic-log", async(req, res) => {
+    const { programName } = req.body;
+    if(programName){
+        const result = await messages.update_log(programName);
+        if(!result){
+            res.sendStatus(200);
+        }
+        else if(result){
+            if(result == 1){
+                res.status(500).json("error: issue saving");
+            }else{
+                res.status(500).json("error: issue finding the document");
+            }
+        }
+        return;
+    }
+    res.status(400).json("error: missing the name of the source program");
+    return;
 });
 
 app.listen(PORT, () =>{
