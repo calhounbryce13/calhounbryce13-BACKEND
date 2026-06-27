@@ -54,6 +54,17 @@ const update_log = async(programName) => {
 };
 
 
+const retrieve_log = async() => {
+    try{
+        const log = await Log.find({});
+        return log[0];
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+};
+
+
 const db = mongoose.connection;
 
 db.once("open", ()=>{
@@ -61,4 +72,4 @@ db.once("open", ()=>{
 });
 
 
-export default { save_new_message, get_all_messages, update_log }
+export default { save_new_message, get_all_messages, update_log, retrieve_log }

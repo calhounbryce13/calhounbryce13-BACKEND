@@ -1,11 +1,9 @@
 
 
 ###
-
 GET http://127.0.0.1:3000/messages
 
 ###
-
 POST http://127.0.0.1:3000/mailer
 Content-Type: application/json
 
@@ -15,8 +13,6 @@ Content-Type: application/json
 
 
 ###
-
-
 POST http://127.0.0.1:3000/get-user-data
 Content-Type: application/json
 
@@ -26,10 +22,13 @@ Content-Type: application/json
 
 
 ###
-
 PUT http://127.0.0.1:3000/traffic-log
 Content-type: application/json
 
 {
-    "programName": "quiznest"
+    "programName": ""
 }
+
+###
+GET http://127.0.0.1:3000/get-traffic
+###

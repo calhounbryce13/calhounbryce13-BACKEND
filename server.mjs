@@ -47,6 +47,21 @@ app.post("/mailer", async(req, res) =>{
     
 });
 
+
+app.get("/get-traffic", async(req, res) => {
+    try{
+        const traffic = await messages.retrieve_log();
+        if(traffic){
+            res.status(200).json(traffic);
+            return;
+        }
+    }catch(error){
+        console.log(error);
+    }
+    res.status(500).json("error: issue getting the traffic data");
+    return;
+});
+
 app.put("/traffic-log", async(req, res) => {
     const { programName } = req.body;
     console.log(programName);
